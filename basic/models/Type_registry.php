@@ -30,8 +30,9 @@ class Type_registry extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'description'], 'required'],
-            [['name', 'description'], 'string', 'max' => 45],
-            [['description'], 'unique']
+            [['name'], 'string', 'max' => 45],
+            [['description'], 'unique'],
+            [['description'], 'string', 'max' => 175]
         ];
     }
 

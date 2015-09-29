@@ -16,7 +16,7 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-    public $password2;
+    public $password;
     /**
      * @inheritdoc
      */
@@ -31,7 +31,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['first_name', 'last_name', 'email', 'username', 'password'], 'required'],
+            [['first_name', 'last_name', 'email', 'username'], 'required'],
             [['first_name', 'last_name', 'email', 'username', 'password'], 'string', 'max' => 45],
             [['email'], 'unique'],
             [['username'], 'unique'],
@@ -63,15 +63,15 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         {
             if($this->isNewRecord)
             {
-                $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password2);
+                $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
                 $this->auth_key = Yii::$app->getSecurity()->generateRandomString();
                 $this->access_token = Yii::$app->getSecurity()->generateRandomString();
             }
             else
             {
-                if( !empty($this->password2) )
+                if( !empty($this->password) )
                 {
-                    $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password2);
+                    $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
                 }
             }
             return true;
@@ -144,8 +144,8 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password2 === $password;
-        
+        //return $this->password2 === $password;
+        return Yii::$app->getSecurity()->validatePassword($password,$this->password_hash);
     }
 
 
