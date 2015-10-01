@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Registry */
@@ -14,9 +15,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cause')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'period_begin')->textInput() ?>
+    <?= $form->field($model, 'period_begin')->widget(\yii\jui\DatePicker::classname(), [
+        'dateFormat' => 'yyyy-MM-dd',
+    ]) ?>
 
-    <?= $form->field($model, 'period_end')->textInput() ?>
+    <?= $form->field($model, 'period_end')->widget(\yii\jui\DatePicker::classname(), [
+        'dateFormat' => 'yyyy-MM-dd',
+    ]) ?>
 
     <?= $form->field($model, 'recuperation')->textarea(['rows' => 6]) ?>
 
