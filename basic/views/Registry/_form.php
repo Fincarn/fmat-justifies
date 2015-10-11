@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use mackiavelly\juidatetimepicker\JuiDatetimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Registry */
@@ -14,9 +15,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cause')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'period_begin')->textInput() ?>
+    <?= $form->field($model, 'period_begin')->widget(\mackiavelly\juidatetimepicker\JuiDatetimePicker::classname(), [
+        'dateFormat' => 'yyyy-MM-dd',
+        'timeFormat' => 'HH:mm:ss',
+    ]) ?>
 
-    <?= $form->field($model, 'period_end')->textInput() ?>
+    <?= $form->field($model, 'period_end')->widget(\mackiavelly\juidatetimepicker\JuiDatetimePicker::classname(), [
+        'dateFormat' => 'yyyy-MM-dd',
+        'timeFormat' => 'HH:mm:ss',
+    ]) ?>
 
     <?= $form->field($model, 'recuperation')->textarea(['rows' => 6]) ?>
 

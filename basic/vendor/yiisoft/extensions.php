@@ -57,4 +57,31 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
+  'yiisoft/yii2-jui' => 
+  array (
+    'name' => 'yiisoft/yii2-jui',
+    'version' => '2.0.4.0',
+    'alias' => 
+    array (
+      '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui',
+    ),
+  ),
+  'mackiavelly/yii2-juidatepicker' => 
+  array (
+    'name' => 'mackiavelly/yii2-juidatepicker',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@mackiavelly/juidatepicker' => $vendorDir . '/mackiavelly/yii2-juidatepicker',
+    ),
+  ),
+  'mackiavelly/yii2-juidatetimepicker' => 
+  array (
+    'name' => 'mackiavelly/yii2-juidatetimepicker',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@mackiavelly/juidatetimepicker' => $vendorDir . '/mackiavelly/yii2-juidatetimepicker',
+    ),
+  ),
 );
