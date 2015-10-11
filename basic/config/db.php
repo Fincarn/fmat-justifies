@@ -3,7 +3,7 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=servicio',
-    'username' => 'isicsregister',
-    'password' => '5Y3hb7e4WcqQKLNM',
+    'username' => 'servicios',
+    'password' => 'xsGr7b8x4sy9p8Vv',
     'charset' => 'utf8',
 ];
