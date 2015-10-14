@@ -29,9 +29,9 @@ class Type_registry extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description'], 'required'],
+            [['name'], 'required'],
             [['name'], 'string', 'max' => 45],
-            [['description'], 'unique'],
+            [['name'], 'unique'],
             [['description'], 'string', 'max' => 175]
         ];
     }
