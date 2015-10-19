@@ -55,4 +55,12 @@ class Registry extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTypeRegistry()
+    {
+        return $this->hasOne(TypeRegistry::className(), ['id' => 'type_registry_id']);
+    }
 }

@@ -13,7 +13,7 @@ use Yii;
  *
  * @property Registry[] $registries
  */
-class Type_registry extends \yii\db\ActiveRecord
+class TypeRegistry extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Type_registry;
+use app\models\TypeRegistry;
 
 /**
  * Type_registrySearch represents the model behind the search form about `app\models\Type_registry`.
  */
-class Type_registrySearch extends Type_registry
+class TypeRegistrySearch extends TypeRegistry
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class Type_registrySearch extends Type_registry
      */
     public function search($params)
     {
-        $query = Type_registry::find();
+        $query = TypeRegistry::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

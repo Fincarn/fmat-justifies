@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Type_registry;
-use app\models\Type_registrySearch;
+use app\models\TypeRegistry;
+use app\models\TypeRegistrySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * Type_registryController implements the CRUD actions for Type_registry model.
+ * TypeRegistryController implements the CRUD actions for TypeRegistry model.
  */
-class Type_registryController extends Controller
+class TypeRegistryController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class Type_registryController extends Controller
     }
 
     /**
-     * Lists all Type_registry models.
+     * Lists all TypeRegistry models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new Type_registrySearch();
+        $searchModel = new TypeRegistrySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class Type_registryController extends Controller
     }
 
     /**
-     * Displays a single Type_registry model.
+     * Displays a single TypeRegistry model.
      * @param string $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class Type_registryController extends Controller
     }
 
     /**
-     * Creates a new Type_registry model.
+     * Creates a new TypeRegistry model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Type_registry();
+        $model = new TypeRegistry();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class Type_registryController extends Controller
     }
 
     /**
-     * Updates an existing Type_registry model.
+     * Updates an existing TypeRegistry model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -91,7 +91,7 @@ class Type_registryController extends Controller
     }
 
     /**
-     * Deletes an existing Type_registry model.
+     * Deletes an existing TypeRegistry model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -104,15 +104,15 @@ class Type_registryController extends Controller
     }
 
     /**
-     * Finds the Type_registry model based on its primary key value.
+     * Finds the TypeRegistry model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Type_registry the loaded model
+     * @return TypeRegistry the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Type_registry::findOne($id)) !== null) {
+        if (($model = TypeRegistry::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
