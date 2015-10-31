@@ -34,7 +34,7 @@ class Registry extends \yii\db\ActiveRecord
             [['cause', 'period_begin', 'type_registry_id', 'user_id'], 'required'],
             [['cause', 'recuperation'], 'string'],
             [['type_registry_id', 'user_id'], 'integer'],
-            [['type_registry_id'],'exist','targetClass'=>'app\models\Type_registry','targetAttribute'=>'id'],
+            [['type_registry_id'],'exist','targetClass'=>'app\models\TypeRegistry','targetAttribute'=>'id'],
             [['user_id'],'exist','targetClass'=>'app\models\User','targetAttribute'=>'id'],
             [['period_begin', 'period_end'],'date', 'format'=>'yyyy-MM-dd HH:mm:ss']
         ];
@@ -62,5 +62,13 @@ class Registry extends \yii\db\ActiveRecord
     public function getTypeRegistry()
     {
         return $this->hasOne(TypeRegistry::className(), ['id' => 'type_registry_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

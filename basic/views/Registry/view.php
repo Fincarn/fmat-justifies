@@ -35,7 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'period_end',
             'recuperation',
             'typeRegistry.name',
-            'user_id',
+            'user.first_name',
+            'user.last_name'
         ],
     ]) ?>
 
