@@ -23,22 +23,6 @@ class RegistryController extends Controller
                     'delete' => ['post'],
                 ],
             ],
-            'access' => [
-                'class' => 'yii\filters\AccessControl', 
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['create', 'update', 'delete'],
-                        'roles' => ['administrator'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['index', 'view'],
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-       
         ];
     }
 
