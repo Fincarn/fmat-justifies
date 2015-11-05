@@ -17,6 +17,8 @@ use Yii;
  */
 class Registry extends \yii\db\ActiveRecord
 {
+    public $period_range;
+
     /**
      * @inheritdoc
      */
@@ -31,12 +33,11 @@ class Registry extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cause', 'period_begin', 'type_registry_id', 'user_id'], 'required'],
+            [['cause','type_registry_id', 'user_id', 'period_range'], 'required'],
             [['cause', 'recuperation'], 'string'],
             [['type_registry_id', 'user_id'], 'integer'],
             [['type_registry_id'],'exist','targetClass'=>'app\models\TypeRegistry','targetAttribute'=>'id'],
             [['user_id'],'exist','targetClass'=>'app\models\User','targetAttribute'=>'id'],
-            [['period_begin', 'period_end'],'date', 'format'=>'yyyy-MM-dd HH:mm:ss']
         ];
     }
 
@@ -70,5 +71,18 @@ class Registry extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }                                                                 
+    }   
+
+    public function beforeSave($insert)
+    {
+        if(parent::beforeSave($insert))
+        {
+            $rangeDates = explode(' - ', $this->period_range);
+            $this->period_begin = $rangeDates[0];
+            $this->period_end = $rangeDates[1];
+            
+            return true;
+        }
+        return false;
+    }                                                              
 }

@@ -75,13 +75,22 @@ return array (
       '@mackiavelly/juidatepicker' => $vendorDir . '/mackiavelly/yii2-juidatepicker',
     ),
   ),
-  'mackiavelly/yii2-juidatetimepicker' => 
+  'kartik-v/yii2-krajee-base' => 
   array (
-    'name' => 'mackiavelly/yii2-juidatetimepicker',
+    'name' => 'kartik-v/yii2-krajee-base',
+    'version' => '1.7.7.0',
+    'alias' => 
+    array (
+      '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base',
+    ),
+  ),
+  'kartik-v/yii2-date-range' => 
+  array (
+    'name' => 'kartik-v/yii2-date-range',
     'version' => '9999999-dev',
     'alias' => 
     array (
-      '@mackiavelly/juidatetimepicker' => $vendorDir . '/mackiavelly/yii2-juidatetimepicker',
+      '@kartik/daterange' => $vendorDir . '/kartik-v/yii2-date-range',
     ),
   ),
 );

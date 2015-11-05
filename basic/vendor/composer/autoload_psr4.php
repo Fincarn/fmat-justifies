@@ -15,8 +15,9 @@ return array(
     'yii\\codeception\\' => array($vendorDir . '/yiisoft/yii2-codeception'),
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
-    'mackiavelly\\juidatetimepicker\\' => array($vendorDir . '/mackiavelly/yii2-juidatetimepicker'),
     'mackiavelly\\juidatepicker\\' => array($vendorDir . '/mackiavelly/yii2-juidatepicker'),
+    'kartik\\daterange\\' => array($vendorDir . '/kartik-v/yii2-date-range'),
+    'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );

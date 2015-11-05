@@ -1,8 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use mackiavelly\juidatetimepicker\JuiDatetimePicker;
+use yii\helpers\ArrayHelper;
+use yii\bootstrap\ActiveForm;
+use kartik\daterange\DateRangePicker;
+use app\models\TypeRegistry;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Registry */
@@ -15,19 +17,28 @@ use mackiavelly\juidatetimepicker\JuiDatetimePicker;
 
     <?= $form->field($model, 'cause')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'period_begin')->widget(\mackiavelly\juidatetimepicker\JuiDatetimePicker::classname(), [
-        'dateFormat' => 'yyyy-MM-dd',
-        'timeFormat' => 'HH:mm:ss',
-    ]) ?>
-
-    <?= $form->field($model, 'period_end')->widget(\mackiavelly\juidatetimepicker\JuiDatetimePicker::classname(), [
-        'dateFormat' => 'yyyy-MM-dd',
-        'timeFormat' => 'HH:mm:ss',
+    <?= $form->field($model, 'period_range')->widget(DateRangePicker::classname(), [
+        'convertFormat' => true,
+        'hideInput' => true,
+        'pluginOptions' =>[
+            'timePicker' => true,
+            'timePickerIncrement' => 15,
+            'locale'=>[
+                'format'=>'Y-m-d H:i:s',
+                'separator'=>' - ',
+            ]
+        ]
     ]) ?>
 
     <?= $form->field($model, 'recuperation')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'type_registry_id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'type_registry_id')->radioList(
+        ArrayHelper::map(
+            TypeRegistry::find()->all(),
+            'id',
+            'name'
+        )
+    ) ?>
 
     <?= $form->field($model, 'user_id')->textInput(['maxlength' => true]) ?>
 
