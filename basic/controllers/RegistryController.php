@@ -81,6 +81,7 @@ class RegistryController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $model->user_id = Yii::$app->user->identity->id;
             return $this->render('create', [
                 'model' => $model,
             ]);
