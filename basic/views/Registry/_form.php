@@ -5,11 +5,44 @@ use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 use kartik\daterange\DateRangePicker;
 use app\models\TypeRegistry;
+use app\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Registry */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+
+<?php $this->registerJs('
+    function showUserId()
+    {
+        $("[name=\'Registry[user_id]\']").removeAttr("disabled");
+        $(".field-registry-user_id").show();
+    }
+
+    function hideUserId()
+    {
+        $("[name=\'Registry[user_id]\']").attr("disabled","disabled");
+        $(".field-registry-user_id").hide();
+    }
+    
+    function toggleUserId()
+    {
+        var typeRegistry = 
+        $("[name=\'Registry[type_registry_id]\']:checked").val(); 
+
+        if ( typeRegistry != 1 ) {
+            showUserId();
+        } else {
+            hideUserId();
+        }
+    }
+
+    $("[name=\'Registry[type_registry_id]\']").change(function(){
+        toggleUserId();
+    });
+
+    toggleUserId();
+'); ?>
 
 <div class="registry-form">
 
@@ -40,7 +73,15 @@ use app\models\TypeRegistry;
         )
     ) ?>
 
-    <?= $form->field($model, 'user_id')->hiddenInput()->label(false) ?>
+    <?= $form->field($model, 'user_id')->dropDownList(
+        ArrayHelper::map(
+            User::find()->all(),
+            'id',
+            function($model, $defaultValue) {
+                return $model->first_name.' '.$model->last_name;
+            }
+        )
+    ) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

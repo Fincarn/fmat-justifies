@@ -33,11 +33,12 @@ class Registry extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cause','type_registry_id', 'user_id', 'period_range'], 'required'],
+            [['cause','type_registry_id','period_range'], 'required'],
             [['cause', 'recuperation'], 'string'],
             [['type_registry_id', 'user_id'], 'integer'],
             [['type_registry_id'],'exist','targetClass'=>'app\models\TypeRegistry','targetAttribute'=>'id'],
-            [['user_id'],'exist','targetClass'=>'app\models\User','targetAttribute'=>'id'],
+            [['user_id'],'exist','targetClass'=>'app\models\User','targetAttribute'=>'id', 'skipOnEmpty'=>false, 'on'=>'Create'],
+            [['user_id'],'exist','targetClass'=>'app\models\User','targetAttribute'=>'id', 'skipOnEmpty'=>true, 'on'=>'Update'],
         ];
     }
 
