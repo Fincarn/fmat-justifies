@@ -30,10 +30,10 @@ use app\models\User;
         var typeRegistry = 
         $("[name=\'Registry[type_registry_id]\']:checked").val(); 
 
-        if ( typeRegistry != 1 ) {
-            showUserId();
-        } else {
+        if ( typeRegistry == 1 || typeRegistry === undefined ) {
             hideUserId();
+        } else {
+            showUserId();
         }
     }
 
