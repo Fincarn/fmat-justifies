@@ -3,9 +3,28 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
+'components' => [
+    'authManager' => [
+        'class' => 'yii\rbac\DbManager',
+    ],
+],
+'modules' => [
+	'gridview'=>'kartik\grid\Module',
+    'rbac' =>  [
+        'class' => 'johnitvn\rbacplus\Module',
+		'userModelClassName'=>null,
+        'userModelIdField'=>'id',
+        'userModelLoginField'=>'username',
+        'userModelLoginFieldLabel'=>null,
+        'userModelExtraDataColumls'=>null,
+        'beforeCreateController'=>null,
+        'beforeAction'=>null
+    ]       
+],
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	'language'=>'es',
     'components' => [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',

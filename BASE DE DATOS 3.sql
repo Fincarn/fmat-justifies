@@ -122,11 +122,7 @@ CREATE TABLE IF NOT EXISTS `registry` (
 -- Volcado de datos para la tabla `registry`
 --
 
-INSERT INTO `registry` (`id`, `cause`, `period_begin`, `period_end`, `recuperation`, `type_registry_id`, `user_id`) VALUES
-(1, 'sdf', '2015-08-05 12:00:00', NULL, 'dsa', 1, 1),
-(2, 'dfas', '2015-09-24 04:08:00', NULL, 'adf', 1, 1),
-(3, 'ffafda', '2015-09-24 04:09:00', NULL, 'bas', 1, 1),
-(4, 'blabla', '2015-08-13 12:08:00', NULL, '', 1, 1);
+
 
 -- --------------------------------------------------------
 
