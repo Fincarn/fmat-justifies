@@ -46,6 +46,19 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],
+    'modules' => [
+        'gridview'=>'kartik\grid\Module',
+        'rbac' =>  [
+            'class' => 'johnitvn\rbacplus\Module',
+            'userModelClassName'=>null,
+            'userModelIdField'=>'id',
+            'userModelLoginField'=>'username',
+            'userModelLoginFieldLabel'=>null,
+            'userModelExtraDataColumls'=>null,
+            'beforeCreateController'=>null,
+            'beforeAction'=>null
+            ]     
+    ],
     'params' => $params,
 ];
 
