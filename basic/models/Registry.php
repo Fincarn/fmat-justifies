@@ -81,7 +81,9 @@ class Registry extends \yii\db\ActiveRecord
             $rangeDates = explode(' - ', $this->period_range);
             $this->period_begin = $rangeDates[0];
             $this->period_end = $rangeDates[1];
-            
+
+            if($this->type_registry_id == 1)
+                $this->user_id = Yii::$app->user->identity->id;
             return true;
         }
         return false;

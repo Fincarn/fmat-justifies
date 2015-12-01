@@ -12,37 +12,38 @@ use app\models\User;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<?php $this->registerJs('
-    function showUserId()
-    {
-        $("[name=\'Registry[user_id]\']").removeAttr("disabled");
-        $(".field-registry-user_id").show();
-    }
-
-    function hideUserId()
-    {
-        $("[name=\'Registry[user_id]\']").attr("disabled","disabled");
-        $(".field-registry-user_id").hide();
-    }
-    
-    function toggleUserId()
-    {
-        var typeRegistry = 
-        $("[name=\'Registry[type_registry_id]\']:checked").val(); 
-
-        if ( typeRegistry == 1 || typeRegistry === undefined ) {
-            hideUserId();
-        } else {
-            showUserId();
+    <?php $this->registerJs('
+        function showUserId()
+        {
+            $("[name=\'Registry[user_id]\']").removeAttr("disabled");
+            $(".field-registry-user_id").show();
         }
-    }
 
-    $("[name=\'Registry[type_registry_id]\']").change(function(){
+        function hideUserId()
+        {
+            $("[name=\'Registry[user_id]\']").attr("disabled","disabled");
+            $(".field-registry-user_id").hide();
+            $("[name=\'Registry[user_id]\']").val('.Yii::$app->user->identity->id.');
+        }
+        
+        function toggleUserId()
+        {
+            var typeRegistry = 
+            $("[name=\'Registry[type_registry_id]\']:checked").val(); 
+
+            if ( typeRegistry == 1 || typeRegistry === undefined ) {
+                hideUserId();
+            } else {
+                showUserId();
+            }
+        }
+
+        $("[name=\'Registry[type_registry_id]\']").change(function(){
+            toggleUserId();
+        });
+
         toggleUserId();
-    });
-
-    toggleUserId();
-'); ?>
+    '); ?>
 
 <div class="registry-form">
 
@@ -82,6 +83,7 @@ use app\models\User;
             }
         )
     ) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
