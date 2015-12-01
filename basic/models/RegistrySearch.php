@@ -45,6 +45,7 @@ class RegistrySearch extends Registry
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['period_begin' => SORT_DESC]]
         ]);
 
         $this->load($params);

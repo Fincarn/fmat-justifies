@@ -29,7 +29,7 @@ class RegistryController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create', 'update', 'delete'],
-                        'roles' => ['administrator'],
+                        'roles' => ['Administrator'],
                     ],
                     [
                         'allow' => true,
