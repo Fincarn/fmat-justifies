@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Message translations.
  *
@@ -17,17 +17,17 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'About' => 'informacion',
-    'Contact' => 'contacto',
-    'Home' => 'home',
-    'Login' => 'entrar',
-    'My Company' => 'compa;ia',
+    'About' => 'Informacion',
+    'Contact' => 'Contacto',
+    'Home' => 'Inicio',
+    'Login' => 'Entrar',
+    'My Company' => 'Empresa',
     'Access Token' => '',
     'Auth Key' => '',
-    'Email' => 'correo',
-    'First Name' => 'nombre',
-    'ID' => 'identificador',
-    'Last Name' => 'apellido',
-    'Password' => 'contraseña',
-    'Username' => 'usuario',
+    'Email' => 'Correo',
+    'First Name' => 'Nombre',
+    'ID' => 'Identificador',
+    'Last Name' => 'Apellido',
+    'Password' => 'Contraseña',
+    'Username' => 'Usuario',
 ];
