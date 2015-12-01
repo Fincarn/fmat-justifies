@@ -33,7 +33,7 @@ return [
     'cause' => 'Causa',
     'confirm' => 'Confirmar',
     'create' => 'Crear',
-    'id' => 'Identifacdor',
+    'id' => 'Identificador',
     'period_begin' => 'Periodo Inicio',
     'period_end' => 'Periodo Final',
     'period_range' => 'Rango del Periodo',

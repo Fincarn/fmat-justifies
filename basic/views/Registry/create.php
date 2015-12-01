@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Registry */
 
-$this->title = 'Create Registry';
-$this->params['breadcrumbs'][] = ['label' => 'Registries', 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Registry');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Registries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="registry-create">
