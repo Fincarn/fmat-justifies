@@ -48,13 +48,13 @@ class Registry extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'cause' => 'Cause',
-            'period_begin' => 'Period Begin',
-            'period_end' => 'Period End',
-            'recuperation' => 'Recuperation',
-            'type_registry_id' => 'Type Registry ID',
-            'user_id' => 'User ID',
+            'id' =>  Yii::t('app', 'ID'),
+            'cause' =>  Yii::t('app', 'Cause'),
+            'period_begin' =>  Yii::t('app', 'Period Begin'),
+            'period_end' =>  Yii::t('app', 'Period End'),
+            'recuperation' =>  Yii::t('app', 'Recuperation'),
+            'type_registry_id' =>  Yii::t('app', 'Type Registry ID'),
+            'user_id' =>  Yii::t('app', 'User ID'),
         ];
     }
 

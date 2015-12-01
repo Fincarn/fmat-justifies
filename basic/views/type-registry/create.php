@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Type_registry */
 
-$this->title = 'Create Type Registry';
-$this->params['breadcrumbs'][] = ['label' => 'Type Registries', 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Type Registry');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Type Registries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="type-registry-create">

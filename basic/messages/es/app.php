@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,10 +17,26 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Access Token' => 'Token de Acceso',
+    'Auth Key' => 'Llave',
+    'Cause' => 'Causa',
+    'Email' => 'Correo',
+    'First Name' => 'Nombre',
+    'Last Name' => 'Apellido',
+    'Password' => 'Contraseña',
+    'Period Begin' => 'Inicio del Periodo',
+    'Period End' => 'Final del Periodo',
+    'Recuperation' => 'Recuperacion',
+    'Type Registry ID' => 'Identificado del Tipo de Registro',
+    'User ID' => 'Identificador Usuario',
+    'Username' => 'Usuario',
+    'Verification Code' => 'Codigo de Verificacion',
+    'type_registry' => 'Tipo de Registro',
     'About' => 'Información',
     'Are you sure you want to delete this item?' => 'Estas seguro de eliminar este item?',
     'Contact' => 'Contacto',
     'Create Registry' => 'Crear Registro',
+    'Create Type Registry' => 'Crear Tipo de Registro',
     'Delete' => 'Borrar',
     'Home' => 'Inicio',
     'Login' => 'Entrar',
@@ -29,16 +45,18 @@ return [
     'Registries' => 'Registro',
     'Reset' => 'Reiniciar',
     'Search' => 'Buscar',
+    'Type Registries' => 'Tipo de Registro',
     'Update' => 'Actualizar',
-    'cause' => 'Causa',
+    'Update Registry: ' => 'Actualizar Registro',
+    'Update Type Registry: ' => 'Actualizar Tipo de Registro',
     'confirm' => 'Confirmar',
-    'create' => 'Crear',
-    'id' => 'Identificador',
+    'description' => 'Descripcion',
+    'name' => 'Nombre',
     'period_begin' => 'Periodo Inicio',
     'period_end' => 'Periodo Final',
     'period_range' => 'Rango del Periodo',
     'recuperation' => 'Recuperación',
-    'typeRegistry.name' => 'Nombre tipo de Registro',
-    'user.first_name' => 'Nombre usuario',
-    'user.last_name' => 'Apellido Usuario',
+    'Description' => 'Descripcion',
+    'ID' => 'Identificador',
+    'Name' => 'Nombre',
 ];
