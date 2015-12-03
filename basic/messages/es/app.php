@@ -59,4 +59,7 @@ return [
     'Description' => 'Descripcion',
     'ID' => 'Identificador',
     'Name' => 'Nombre',
+	'username' => 'Usuario',
+	'password' => 'Contraseña',
+	'rememberMe' => 'Recuerda mis Datos',
 ];
