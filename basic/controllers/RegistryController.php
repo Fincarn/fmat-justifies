@@ -8,6 +8,7 @@ use app\models\RegistrySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * RegistryController implements the CRUD actions for Registry model.
@@ -29,7 +30,12 @@ class RegistryController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create', 'update', 'delete'],
-                        'roles' => ['Administrator'],
+                        'roles' => ['Administrator','Dirección General'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['Dirección General','Secretaria Administrativa','Empleado'],
                     ],
                     [
                         'allow' => true,
@@ -47,14 +53,16 @@ class RegistryController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        $searchModel = new RegistrySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    {                   
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        if(Yii::$app->user->can('ViewOwnRegistries')){
+            $searchModel = new RegistrySearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
     }
 
     /**
@@ -76,16 +84,22 @@ class RegistryController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Registry();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            $model->user_id = Yii::$app->user->identity->id;
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if(Yii::$app->user->can('CreateRegistries')){
+            $model = new Registry();
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                $model->user_id = Yii::$app->user->identity->id;
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+        }else{
+            throw new ForbiddenHttpException;
         }
+
     }
 
     /**

@@ -28,13 +28,13 @@ class UserController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create', 'update', 'delete'],
-                        'roles' => ['administrator'],
+                        'actions' => ['create', 'update', 'delete','index', 'view'],
+                        'roles' => ['Administrator'],
                     ],
                     [
-                        'allow' => true,
+                        'allow' => false,
                         'actions' => ['index', 'view'],
-                        'roles' => ['@'],
+                        'roles' => ['Empleado','Dirección General','Secretaria Administrativa'],
                     ],
                 ],
             ],

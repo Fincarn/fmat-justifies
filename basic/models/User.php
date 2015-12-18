@@ -148,5 +148,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return Yii::$app->getSecurity()->validatePassword($password,$this->password_hash);
     }
 
+        public function getFullName (){
+            return $this->first_name.' '.$this->last_name;
+    }       
+
 
 }

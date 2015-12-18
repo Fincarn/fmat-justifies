@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Registry;
+use yii\helpers\ArrayHelper;
 
 /**
  * RegistrySearch represents the model behind the search form about `app\models\Registry`.
@@ -41,7 +42,27 @@ class RegistrySearch extends Registry
      */
     public function search($params)
     {
-        $query = Registry::find();
+        
+
+        $roles=Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId());
+        foreach ($roles as $role)
+        {
+            switch ($role->name) {
+                case 'Empleado':
+                    $query = Registry::findEmpleado();
+                break;
+                case 'Dirección General':
+                    $query= Registry::findDireccion();
+                break;                
+                case 'Secretaria Administrativa':
+                    $query = Registry::findSecretaria();
+                break;
+                case 'Administrator':
+                    $query = Registry::find();
+                break;
+            }
+        }
+        
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

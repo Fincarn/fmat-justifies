@@ -16,7 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Registry'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Registry'), ['create'], ['class' => 'btn btn-success']);
+
+            //print_r(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()));?>
+    
     </p>
 
     <?= GridView::widget([
@@ -30,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'period_begin',
             'period_end',
             'recuperation:ntext',
-            // 'type_registry_id',
-            // 'user_id',
+            'typeRegistry.name',
+            'user.fullName',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

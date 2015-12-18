@@ -6,6 +6,7 @@ $config = [
 'components' => [
     'authManager' => [
         'class' => 'yii\rbac\DbManager',
+        'ruleFile' => '@app\rbac\rules.php', //Default path to rules.php | NEW CONFIGURATIONS
     ],
 ],
 'modules' => [
@@ -19,7 +20,10 @@ $config = [
         'userModelExtraDataColumls'=>null,
         'beforeCreateController'=>null,
         'beforeAction'=>null
-    ]       
+    ],
+        'auth' => [
+            'class' => 'app\modules\auth\Module',
+        ],
 ],
     'id' => 'basic',
     'basePath' => dirname(__DIR__),

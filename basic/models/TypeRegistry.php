@@ -55,4 +55,36 @@ class TypeRegistry extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Registry::className(), ['type_registry_id' => 'id']);
     }
+
+        public static function findRoles()
+    {
+        $roles=Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId());
+        foreach ($roles as $role)
+        {
+            switch ($role->name) {
+                case 'Empleado':
+                    return parent::find()->where(['id'=>1]);
+                break;
+                case 'Dirección General':
+                    return TypeRegistry::findDireccion()->orWhere(['id'=>3]);
+                break;                
+                case 'Secretaria Administrativa':
+                    return TypeRegistry::findBase()->orWhere(['id'=>4]);
+                break;
+                case 'Administrator':
+                    return parent::find();
+                break;
+            }
+        }
+    }
+
+        private static function findDireccion()
+    {
+        return TypeRegistry::findBase()->orWhere(['id'=>2]);
+    }
+
+        private static function findBase()
+    {
+        return parent::find()->where(['id'=>1]);
+    }
 }

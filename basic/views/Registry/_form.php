@@ -1,11 +1,13 @@
 <?php
 
 use yii\helpers\Html;
+
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 use kartik\daterange\DateRangePicker;
 use app\models\TypeRegistry;
 use app\models\User;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Registry */
@@ -25,7 +27,6 @@ use app\models\User;
             $(".field-registry-user_id").hide();
             $("[name=\'Registry[user_id]\']").val('.Yii::$app->user->identity->id.');
         }
-        
         function toggleUserId()
         {
             var typeRegistry = 
@@ -51,6 +52,7 @@ use app\models\User;
 
     <?= $form->field($model, 'cause')->textarea(['rows' => 6]) ?>
 
+
     <?= $form->field($model, 'period_range')->widget(DateRangePicker::classname(), [
         'convertFormat' => true,
         'hideInput' => true,
@@ -62,13 +64,13 @@ use app\models\User;
                 'separator'=>' - ',
             ]
         ]
-    ]) ?>
+    ])?>
 
     <?= $form->field($model, 'recuperation')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'type_registry_id')->radioList(
         ArrayHelper::map(
-            TypeRegistry::find()->all(),
+            TypeRegistry::findRoles()->all(),
             'id',
             'name'
         )
@@ -86,7 +88,9 @@ use app\models\User;
 
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'])
+
+         ?>
     </div>
 
     <?php ActiveForm::end(); ?>

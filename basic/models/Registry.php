@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\ForbiddenHttpException;
 
 /**
  * This is the model class for table "Registry".
@@ -74,6 +75,48 @@ class Registry extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }   
 
+    public static function findDireccion()
+    {
+        return Registry::findDiasEconomicos()->orWhere(['type_registry_id'=>3]);
+    }
+
+    public static function findSecretaria()
+    {
+        return Registry::findComision();
+    }
+
+    public static function findEmpleado()
+    {
+        return Registry::findPropia();
+    }
+
+    public static function findJustificante()
+    {
+        return parent::find()->Where(['type_registry_id'=>1]);
+    }
+
+    private static function findDiasEconomicos()
+    {
+        return Registry::findPropia()->orWhere(['type_registry_id'=>2]);
+    }
+
+    private static function findIncapacidades()
+    {
+        return Registry::findPropia()->orWhere(['type_registry_id'=>3]);
+    }
+
+    private static function findComision()
+    {
+        return Registry::findPropia()->orWhere(['type_registry_id'=>4]);
+    }
+
+    private static function findPropia()
+    {
+        return Registry::findJustificante()->andWhere(['user_id'=>Yii::$app->user->id]);
+    }
+
+
+
     public function beforeSave($insert)
     {
         if(parent::beforeSave($insert))
@@ -82,10 +125,38 @@ class Registry extends \yii\db\ActiveRecord
             $this->period_begin = $rangeDates[0];
             $this->period_end = $rangeDates[1];
 
-            if($this->type_registry_id == 1)
-                $this->user_id = Yii::$app->user->identity->id;
-            return true;
+            switch ($this->type_registry_id) {
+                case 1:
+                    $this->user_id = Yii::$app->user->identity->id;
+                    return true;
+                break;
+                case 2:
+                    if(Yii::$app->user->can('RegisterEconomicDays')){
+                        return true;
+                    }else{
+                        throw new ForbiddenHttpException;
+                    }
+                    return false;
+                break;
+                case 3:
+                    if(Yii::$app->user->can('RegisterDisabilities')){
+                        return true;
+                    }else{
+                        throw new ForbiddenHttpException;
+                    }
+                    return false;
+                break;
+                 case 4:
+                    if(Yii::$app->user->can('RegisterComitions')){
+                        return true;
+                    }else{
+                        throw new ForbiddenHttpException;
+                    }
+                break;
+            }
         }
         return false;
-    }                                                              
+    }    
+
+                                                 
 }
