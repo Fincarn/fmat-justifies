@@ -1,5 +1,3 @@
 # yii2
-
-Esté es el branch maestro del proyecto, nadie lo modifique.
-Aqui se guardara la ultima versión usable del proyecto.
-Cualquier cambio no autorizado se va a deshacer tan pronto como se encuentre.
+Esta es la rama de desarrollo del proyecto.
+Son libres de modificar lo que haga falta en está rama.

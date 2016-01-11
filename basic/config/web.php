@@ -3,9 +3,32 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
+'components' => [
+    'authManager' => [
+        'class' => 'yii\rbac\DbManager',
+        'ruleFile' => '@app\rbac\rules.php', //Default path to rules.php | NEW CONFIGURATIONS
+    ],
+],
+'modules' => [
+	'gridview'=>'kartik\grid\Module',
+    'rbac' =>  [
+        'class' => 'johnitvn\rbacplus\Module',
+		'userModelClassName'=>null,
+        'userModelIdField'=>'id',
+        'userModelLoginField'=>'username',
+        'userModelLoginFieldLabel'=>null,
+        'userModelExtraDataColumls'=>null,
+        'beforeCreateController'=>null,
+        'beforeAction'=>null
+    ],
+        'auth' => [
+            'class' => 'app\modules\auth\Module',
+        ],
+],
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	'language'=>'es',
     'components' => [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
@@ -45,6 +68,19 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+    ],
+    'modules' => [
+        'gridview'=>'kartik\grid\Module',
+        'rbac' =>  [
+            'class' => 'johnitvn\rbacplus\Module',
+            'userModelClassName'=>null,
+            'userModelIdField'=>'id',
+            'userModelLoginField'=>'username',
+            'userModelLoginFieldLabel'=>null,
+            'userModelExtraDataColumls'=>null,
+            'beforeCreateController'=>null,
+            'beforeAction'=>null
+            ]     
     ],
     'params' => $params,
 ];

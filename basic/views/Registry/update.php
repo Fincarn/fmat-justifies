@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Registry */
 
-$this->title = 'Update Registry: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Registries', 'url' => ['index']];
+$this->title = Yii::t('app', 'Update Registry: ') . ' ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Registries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

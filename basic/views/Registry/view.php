@@ -8,7 +8,7 @@ use yii\jui\DatePicker;
 /* @var $model app\models\Registry */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Registries', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Registries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="registry-view">
@@ -16,28 +16,27 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                Yii::t('app', 'confirm') => Yii::t('app', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
-    <?= DetailView::widget('zii.widgets.jui.CJuiDatePicker',[
+    <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'cause:ntext',
-            'period_begin'=> 'from_date',
-                'language' => 'es',
-                'dateFormat' => 'yyyy-MM-dd',
+            'cause',
+            'period_begin',
             'period_end',
-            'recuperation:ntext',
-            'type_registry_id',
-            'user_id',
+            'recuperation',
+            'typeRegistry.name',
+            'user.first_name',
+            'user.last_name'
         ],
     ]) ?>
 
